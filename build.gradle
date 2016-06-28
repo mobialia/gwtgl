@@ -1,0 +1,62 @@
+project.group = 'com.googlecode.gwtgl'
+project.version = '1.0'
+
+repositories {
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+archivesBaseName = 'gwtgl'
+
+dependencies {
+    compile 'com.google.gwt:gwt-user:2.8.0-beta1'
+    compile 'com.google.gwt:gwt-dev:2.8.0-beta1'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+publishing {
+    publications {
+        jmini3dGwt(MavenPublication) {
+            from components.java
+            artifactId = 'gwtgl'
+            artifact sourcesJar
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['jmini3dGwt']
+    pkg {
+        repo = 'maven'
+        name = 'com.googlecode.gwtgl'
+        desc = 'GwtGL is a GWT binding for the WebGL API'
+        userOrg = 'mobialia'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/mobialia/gwtgl.git'
+        githubRepo = 'mobialia/gwtgl'
+        publish = true
+    }
+}
