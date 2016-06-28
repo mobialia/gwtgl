@@ -34,3 +34,19 @@ repository:
 ```
 gradle clean publishToMavenLocal
 ```
+
+Use GwtGL in other projects
+===========================
+The binaries are uploaded in the Mobialia bintray repository, you can use them in other gradle
+projects including their build.gradle:
+
+```
+repositories {
+    maven { url 'https://dl.bintray.com/mobialia/maven' }
+}
+
+dependencies {
+    compile 'com.googlecode.gwtgl:gwtgl:1.0.0'
+    compile 'com.googlecode.gwtgl:gwtgl:1.0.0:sources'
+}
+```
