@@ -17,10 +17,8 @@ limitations under the License.
 <module>
 	<!-- Inherit the core Web Toolkit stuff.                        -->
 	<inherits name='com.google.gwt.core.Core' />
-	
 	<inherits name='com.google.gwt.typedarrays.TypedArrays' />
 
 	<!-- Specify the paths for translatable code                    -->
 	<source path='binding' />
-
 </module>

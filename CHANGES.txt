@@ -1,8 +1,8 @@
 = 1.0 - Jun 2016 =
 ==================
 
-  * TypedArrays a in different GWT package
-  * Use int instead WebGLUniformLocation WebGLTexturem and WebGLBuffer
+  * Use the standard GWT TypedArrays implementation
+  * Use int instead WebGLUniformLocation, WebGLTexture and WebGLBuffer
 
 = 0.9.1 - Dec 31, 2011 =
 ======================

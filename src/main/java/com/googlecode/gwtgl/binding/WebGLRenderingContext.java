@@ -19,12 +19,14 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayInteger;
 import com.google.gwt.core.client.JsArrayNumber;
-import com.google.gwt.typedarrays.client.ArrayBuffer;
-import com.google.gwt.typedarrays.client.ArrayBufferView;
-import com.google.gwt.typedarrays.client.Float32Array;
-import com.google.gwt.typedarrays.client.Int32Array;
-import com.google.gwt.typedarrays.client.JsArrayUtil;
-import com.google.gwt.typedarrays.client.TypedArray;
+import com.google.gwt.core.client.JsArrayString;
+import com.google.gwt.core.client.JsArrayUtils;
+import com.google.gwt.typedarrays.client.JsUtils;
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
+import com.google.gwt.typedarrays.shared.ArrayBufferView;
+import com.google.gwt.typedarrays.shared.Float32Array;
+import com.google.gwt.typedarrays.shared.Int32Array;
+import com.google.gwt.typedarrays.shared.TypedArrays;
 
 /**
  * 
@@ -808,15 +810,15 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.bufferData(target, size, usage);
   }-*/;
 
-  public native void bufferData(int target, TypedArray<?> dta, int usage) /*-{
-		this.bufferData(target, dta, usage);
+  public native void bufferData(int target, ArrayBufferView data, int usage) /*-{
+		this.bufferData(target, data, usage);
   }-*/;
 
   public native void bufferSubData(int target, int offset, ArrayBuffer data) /*-{
 		this.bufferSubData(target, offset, data);
   }-*/;
 
-  public native void bufferSubData(int target, int offset, TypedArray<?> data) /*-{
+  public native void bufferSubData(int target, int offset, ArrayBufferView data) /*-{
 		this.bufferSubData(target, offset, data);
   }-*/;
 
@@ -1097,13 +1099,18 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
    */
   public String[] getSupportedExtensions() {
     try {
-      return JsArrayUtil.unwrapArray(getSupportedExtensionsAsJsArray());
+      JsArrayString in = getSupportedExtensionsAsJsArray();
+      String[] out = new String[in.length()];
+      for (int i = 0; i < in.length(); i++) {
+        out[i] = in.get(i);
+      }
+      return out;
     } catch (Exception e) {
       return new String[0];
     }
   }
 
-  public native com.google.gwt.core.client.JsArrayString getSupportedExtensionsAsJsArray() /*-{
+  public native JsArrayString getSupportedExtensionsAsJsArray() /*-{
 		return this.getSupportedExtensions();
   }-*/;
 
@@ -1111,7 +1118,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		return this.getTexParameter(target, pname);
   }-*/;
 
-  public native <T extends com.google.gwt.typedarrays.client.TypedArray<?>> T getUniforma(
+  public native <T extends ArrayBufferView> T getUniforma(
       WebGLProgram program, int location) /*-{
 		return this.getUniform(program, location);
   }-*/;
@@ -1252,11 +1259,11 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.texParameteri(target, pname, value);
   }-*/;
 
-  public native void texSubImage2D(int target, int level, int xoffset, int yoffset, int width,
-      int height, int format, int type, TypedArray<?> data) /*-{
-		this.texSubImage2D(target, level, xoffset, yoffset, width, height,
-				format, type, data);
-  }-*/;
+//  public native void texSubImage2D(int target, int level, int xoffset, int yoffset, int width,
+//      int height, int format, int type, TypedArray<?> data) /*-{
+//		this.texSubImage2D(target, level, xoffset, yoffset, width, height,
+//				format, type, data);
+//  }-*/;
 
   public native void texSubImage2D(int target, int level, int xoffset, int yoffset,
       JavaScriptObject data) /*-{
@@ -1279,7 +1286,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform1fv(int location, float[] values) {
-    uniform1fv(location, JsArrayUtil.wrapArray(values));
+    uniform1fv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform1fv(int location, JsArrayNumber values) /*-{
@@ -1295,7 +1302,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform1iv(int location, int[] values) {
-    uniform1iv(location, JsArrayUtil.wrapArray(values));
+    uniform1iv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform1iv(int location, Int32Array v) /*-{
@@ -1311,7 +1318,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform2fv(int location, float[] values) {
-    uniform2fv(location, JsArrayUtil.wrapArray(values));
+    uniform2fv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform2fv(int location, Float32Array v) /*-{
@@ -1327,7 +1334,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform2iv(int location, int[] values) {
-    uniform2iv(location, JsArrayUtil.wrapArray(values));
+    uniform2iv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform2iv(int location, Int32Array v) /*-{
@@ -1343,7 +1350,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform3fv(int location, float[] values) {
-    uniform3fv(location, JsArrayUtil.wrapArray(values));
+    uniform3fv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform3fv(int location, Float32Array v) /*-{
@@ -1359,7 +1366,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform3iv(int location, int[] values) {
-    uniform3iv(location, JsArrayUtil.wrapArray(values));
+    uniform3iv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform3iv(int location, JsArrayInteger values) /*-{
@@ -1375,7 +1382,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform4fv(int location, float[] values) {
-    uniform4fv(location, JsArrayUtil.wrapArray(values));
+    uniform4fv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform4fv(int location, Float32Array v) /*-{
@@ -1391,7 +1398,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniform4iv(int location, int[] values) {
-    uniform4iv(location, JsArrayUtil.wrapArray(values));
+    uniform4iv(location, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void uniform4iv(int location, Int32Array v) /*-{
@@ -1403,7 +1410,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniformMatrix2fv(int location, boolean transpose, float[] value) {
-    uniformMatrix2fv(location, transpose, JsArrayUtil.wrapArray(value));
+    uniformMatrix2fv(location, transpose, JsArrayUtils.readOnlyJsArray(value));
   }
 
   public native void uniformMatrix2fv(int location, boolean transpose,
@@ -1417,7 +1424,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniformMatrix3fv(int location, boolean transpose, float[] value) {
-    uniformMatrix3fv(location, transpose, JsArrayUtil.wrapArray(value));
+    uniformMatrix3fv(location, transpose, JsArrayUtils.readOnlyJsArray(value));
   }
 
   public native void uniformMatrix3fv(int location, boolean transpose,
@@ -1431,7 +1438,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void uniformMatrix4fv(int location, boolean transpose, float[] value) {
-    uniformMatrix4fv(location, transpose, JsArrayUtil.wrapArray(value));
+    uniformMatrix4fv(location, transpose, JsArrayUtils.readOnlyJsArray(value));
   }
 
   public native void uniformMatrix4fv(int location, boolean transpose,
@@ -1457,7 +1464,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void vertexAttrib1fv(int index, float[] values) {
-    vertexAttrib1fv(index, JsArrayUtil.wrapArray(values));
+    vertexAttrib1fv(index, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void vertexAttrib1fv(int index, Float32Array values) /*-{
@@ -1473,7 +1480,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void vertexAttrib2fv(int index, float[] values) {
-    vertexAttrib2fv(index, JsArrayUtil.wrapArray(values));
+    vertexAttrib2fv(index, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void vertexAttrib2fv(int index, Float32Array values) /*-{
@@ -1489,7 +1496,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void vertexAttrib3fv(int index, float[] values) {
-    vertexAttrib3fv(index, JsArrayUtil.wrapArray(values));
+    vertexAttrib3fv(index, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void vertexAttrib3fv(int index, Float32Array values) /*-{
@@ -1505,7 +1512,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public void vertexAttrib4fv(int index, float[] values) {
-    vertexAttrib4fv(index, JsArrayUtil.wrapArray(values));
+    vertexAttrib4fv(index, JsArrayUtils.readOnlyJsArray(values));
   }
 
   public native void vertexAttrib4fv(int index, Float32Array values) /*-{
