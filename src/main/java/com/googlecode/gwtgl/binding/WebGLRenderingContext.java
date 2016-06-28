@@ -764,7 +764,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.bindAttribLocation(program, index, name);
   }-*/;
 
-  public native void bindBuffer(int target, WebGLBuffer buffer) /*-{
+  public native void bindBuffer(int target, int buffer) /*-{
 		this.bindBuffer(target, buffer);
   }-*/;
 
@@ -776,7 +776,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.bindRenderbuffer(target, buffer);
   }-*/;
 
-  public native void bindTexture(int target, WebGLTexture texture) /*-{
+  public native void bindTexture(int target, int texture) /*-{
 		this.bindTexture(target, texture);
   }-*/;
 
@@ -860,7 +860,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 				y, width, height);
   }-*/;
 
-  public native WebGLBuffer createBuffer() /*-{
+  public native int createBuffer() /*-{
 		return this.createBuffer();
   }-*/;
 
@@ -880,7 +880,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		return this.createShader(shaderType);
   }-*/;
 
-  public native WebGLTexture createTexture() /*-{
+  public native int createTexture() /*-{
 		return this.createTexture();
   }-*/;
 
@@ -888,7 +888,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.cullFace(mode);
   }-*/;
 
-  public native void deleteBuffer(WebGLBuffer buffer) /*-{
+  public native void deleteBuffer(int buffer) /*-{
 		this.deleteBuffer(buffer);
   }-*/;
 
@@ -908,7 +908,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.deleteShader(shader);
   }-*/;
 
-  public native void deleteTexture(WebGLTexture texture) /*-{
+  public native void deleteTexture(int texture) /*-{
 		this.deleteTexture(texture);
   }-*/;
 
@@ -965,7 +965,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		this.framebufferRenderbuffer(target, attachment, rbtarget, rbuffer);
   }-*/;
 
-  public native void framebufferTexture2D(int target, int att, int textarget, WebGLTexture tex,
+  public native void framebufferTexture2D(int target, int att, int textarget, int tex,
       int level) /*-{
 		this.framebufferTexture2D(target, att, textarget, tex, level);
   }-*/;
@@ -1112,23 +1112,23 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
   }-*/;
 
   public native <T extends com.google.gwt.typedarrays.client.TypedArray<?>> T getUniforma(
-      WebGLProgram program, WebGLUniformLocation location) /*-{
+      WebGLProgram program, int location) /*-{
 		return this.getUniform(program, location);
   }-*/;
 
-  public native boolean getUniformb(WebGLProgram program, WebGLUniformLocation location) /*-{
+  public native boolean getUniformb(WebGLProgram program, int location) /*-{
 		return this.getUniform(program, location);
   }-*/;
 
-  public native float getUniformf(WebGLProgram program, WebGLUniformLocation location) /*-{
+  public native float getUniformf(WebGLProgram program, int location) /*-{
 		return this.getUniform(program, location);
   }-*/;
 
-  public native int getUniformi(WebGLProgram program, WebGLUniformLocation location) /*-{
+  public native int getUniformi(WebGLProgram program, int location) /*-{
 		return this.getUniform(program, location);
   }-*/;
 
-  public native WebGLUniformLocation getUniformLocation(WebGLProgram program, String name) /*-{
+  public native int getUniformLocation(WebGLProgram program, String name) /*-{
 		return this.getUniformLocation(program, name);
   }-*/;
 
@@ -1148,7 +1148,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		return this.getVertexAttribOffset(index, pname);
   }-*/;
 
-  public native boolean isBuffer(WebGLBuffer buffer) /*-{
+  public native boolean isBuffer(int buffer) /*-{
 		return this.isBuffer(buffer);
   }-*/;
 
@@ -1168,7 +1168,7 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 		return this.isShader(shader);
   }-*/;
 
-  public native boolean isTexture(WebGLTexture texture) /*-{
+  public native boolean isTexture(int texture) /*-{
 		return this.isTexture(texture);
   }-*/;
 
@@ -1274,172 +1274,172 @@ public final class WebGLRenderingContext extends JavaScriptObject implements Con
 				asPremultipliedAlpha);
   }-*/;
 
-  public native void uniform1f(WebGLUniformLocation location, float v0) /*-{
+  public native void uniform1f(int location, float v0) /*-{
 		this.uniform1f(location, v0);
   }-*/;
 
-  public void uniform1fv(WebGLUniformLocation location, float[] values) {
+  public void uniform1fv(int location, float[] values) {
     uniform1fv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform1fv(WebGLUniformLocation location, JsArrayNumber values) /*-{
+  public native void uniform1fv(int location, JsArrayNumber values) /*-{
 		this.uniform1fv(location, values);
   }-*/;
 
-  public native void uniform1fv(WebGLUniformLocation location, Float32Array v) /*-{
+  public native void uniform1fv(int location, Float32Array v) /*-{
 		this.uniform1fv(location, v);
   }-*/;
 
-  public native void uniform1i(WebGLUniformLocation location, int v0) /*-{
+  public native void uniform1i(int location, int v0) /*-{
 		this.uniform1i(location, v0);
   }-*/;
 
-  public void uniform1iv(WebGLUniformLocation location, int[] values) {
+  public void uniform1iv(int location, int[] values) {
     uniform1iv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform1iv(WebGLUniformLocation location, Int32Array v) /*-{
+  public native void uniform1iv(int location, Int32Array v) /*-{
 		this.uniform1iv(location, v);
   }-*/;
 
-  public native void uniform1iv(WebGLUniformLocation location, JsArrayInteger values) /*-{
+  public native void uniform1iv(int location, JsArrayInteger values) /*-{
 		this.uniform1iv(location, values);
   }-*/;
 
-  public native void uniform2f(WebGLUniformLocation location, float v0, float v1) /*-{
+  public native void uniform2f(int location, float v0, float v1) /*-{
 		this.uniform2f(location, v0, v1);
   }-*/;
 
-  public void uniform2fv(WebGLUniformLocation location, float[] values) {
+  public void uniform2fv(int location, float[] values) {
     uniform2fv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform2fv(WebGLUniformLocation location, Float32Array v) /*-{
+  public native void uniform2fv(int location, Float32Array v) /*-{
 		this.uniform2fv(location, v);
   }-*/;
 
-  public native void uniform2fv(WebGLUniformLocation location, JsArrayNumber values) /*-{
+  public native void uniform2fv(int location, JsArrayNumber values) /*-{
 		this.uniform2fv(location, values);
   }-*/;
 
-  public native void uniform2i(WebGLUniformLocation location, int v0, int v1) /*-{
+  public native void uniform2i(int location, int v0, int v1) /*-{
 		this.uniform2i(location, v0, v1);
   }-*/;
 
-  public void uniform2iv(WebGLUniformLocation location, int[] values) {
+  public void uniform2iv(int location, int[] values) {
     uniform2iv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform2iv(WebGLUniformLocation location, Int32Array v) /*-{
+  public native void uniform2iv(int location, Int32Array v) /*-{
 		this.uniform2iv(location, v);
   }-*/;
 
-  public native void uniform2iv(WebGLUniformLocation location, JsArrayInteger values) /*-{
+  public native void uniform2iv(int location, JsArrayInteger values) /*-{
 		this.uniform2iv(location, values);
   }-*/;
 
-  public native void uniform3f(WebGLUniformLocation location, float v0, float v1, float v2) /*-{
+  public native void uniform3f(int location, float v0, float v1, float v2) /*-{
 		this.uniform3f(location, v0, v1, v2);
   }-*/;
 
-  public void uniform3fv(WebGLUniformLocation location, float[] values) {
+  public void uniform3fv(int location, float[] values) {
     uniform3fv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform3fv(WebGLUniformLocation location, Float32Array v) /*-{
+  public native void uniform3fv(int location, Float32Array v) /*-{
 		this.uniform3fv(location, v);
   }-*/;
 
-  public native void uniform3fv(WebGLUniformLocation location, JsArrayNumber values) /*-{
+  public native void uniform3fv(int location, JsArrayNumber values) /*-{
 		this.uniform3fv(location, values);
   }-*/;
 
-  public native void uniform3i(WebGLUniformLocation location, int v0, int v1, int v2) /*-{
+  public native void uniform3i(int location, int v0, int v1, int v2) /*-{
 		this.uniform3i(location, v0, v1, v2);
   }-*/;
 
-  public void uniform3iv(WebGLUniformLocation location, int[] values) {
+  public void uniform3iv(int location, int[] values) {
     uniform3iv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform3iv(WebGLUniformLocation location, JsArrayInteger values) /*-{
+  public native void uniform3iv(int location, JsArrayInteger values) /*-{
 		this.uniform3iv(location, values);
   }-*/;
 
-  public native void uniform3iv(WebGLUniformLocation location, Int32Array v) /*-{
+  public native void uniform3iv(int location, Int32Array v) /*-{
 		this.uniform3iv(location, v);
   }-*/;
 
-  public native void uniform4f(WebGLUniformLocation location, float v0, float v1, float v2, float v3) /*-{
+  public native void uniform4f(int location, float v0, float v1, float v2, float v3) /*-{
 		this.uniform4f(location, v0, v1, v2, v3);
   }-*/;
 
-  public void uniform4fv(WebGLUniformLocation location, float[] values) {
+  public void uniform4fv(int location, float[] values) {
     uniform4fv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform4fv(WebGLUniformLocation location, Float32Array v) /*-{
+  public native void uniform4fv(int location, Float32Array v) /*-{
 		this.uniform4fv(location, v);
   }-*/;
 
-  public native void uniform4fv(WebGLUniformLocation location, JsArrayNumber values) /*-{
+  public native void uniform4fv(int location, JsArrayNumber values) /*-{
 		this.uniform4fv(location, values);
   }-*/;
 
-  public native void uniform4i(WebGLUniformLocation location, int v0, int v1, int v2, int v3) /*-{
+  public native void uniform4i(int location, int v0, int v1, int v2, int v3) /*-{
 		this.uniform4i(location, v0, v1, v2, v3);
   }-*/;
 
-  public void uniform4iv(WebGLUniformLocation location, int[] values) {
+  public void uniform4iv(int location, int[] values) {
     uniform4iv(location, JsArrayUtil.wrapArray(values));
   }
 
-  public native void uniform4iv(WebGLUniformLocation location, Int32Array v) /*-{
+  public native void uniform4iv(int location, Int32Array v) /*-{
 		this.uniform4iv(location, v);
   }-*/;
 
-  public native void uniform4iv(WebGLUniformLocation location, JsArrayInteger values) /*-{
+  public native void uniform4iv(int location, JsArrayInteger values) /*-{
 		this.uniform4iv(location, values);
   }-*/;
 
-  public void uniformMatrix2fv(WebGLUniformLocation location, boolean transpose, float[] value) {
+  public void uniformMatrix2fv(int location, boolean transpose, float[] value) {
     uniformMatrix2fv(location, transpose, JsArrayUtil.wrapArray(value));
   }
 
-  public native void uniformMatrix2fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix2fv(int location, boolean transpose,
       Float32Array value) /*-{
 		this.uniformMatrix2fv(location, transpose, value);
   }-*/;
 
-  public native void uniformMatrix2fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix2fv(int location, boolean transpose,
       JsArrayNumber value) /*-{
 		this.uniformMatrix2fv(location, transpose, value);
   }-*/;
 
-  public void uniformMatrix3fv(WebGLUniformLocation location, boolean transpose, float[] value) {
+  public void uniformMatrix3fv(int location, boolean transpose, float[] value) {
     uniformMatrix3fv(location, transpose, JsArrayUtil.wrapArray(value));
   }
 
-  public native void uniformMatrix3fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix3fv(int location, boolean transpose,
       Float32Array value) /*-{
 		this.uniformMatrix3fv(location, transpose, value);
   }-*/;
 
-  public native void uniformMatrix3fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix3fv(int location, boolean transpose,
       JsArrayNumber value) /*-{
 		this.uniformMatrix3fv(location, transpose, value);
   }-*/;
 
-  public void uniformMatrix4fv(WebGLUniformLocation location, boolean transpose, float[] value) {
+  public void uniformMatrix4fv(int location, boolean transpose, float[] value) {
     uniformMatrix4fv(location, transpose, JsArrayUtil.wrapArray(value));
   }
 
-  public native void uniformMatrix4fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix4fv(int location, boolean transpose,
       Float32Array value) /*-{
 		this.uniformMatrix4fv(location, transpose, value);
   }-*/;
 
-  public native void uniformMatrix4fv(WebGLUniformLocation location, boolean transpose,
+  public native void uniformMatrix4fv(int location, boolean transpose,
       JsArrayNumber value) /*-{
 		this.uniformMatrix4fv(location, transpose, value);
   }-*/;
